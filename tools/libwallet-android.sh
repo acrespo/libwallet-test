@@ -23,6 +23,8 @@ mkdir -p "$build_dir/pkg"
 # 3. Set output flags
 # 4. Use a fixed build cache location
 # 5. Opt in to reproducible builds
+# 6. Print the name of the temporary work directory and do not delete it when exiting.
+# 7. Print the commands.
 
 if [[ -z $GOMODCACHE ]]; then
     GOMODCACHE="$build_dir/pkg"
@@ -37,6 +39,8 @@ GOMODCACHE="$GOMODCACHE" \
     -target="android" -o "$libwallet" \
     -cache  "$GOCACHE"\
     -trimpath -ldflags="-buildid=. -v" \
+    -work \
+    -x \
     ./counter
 
 st=$?
