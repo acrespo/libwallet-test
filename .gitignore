@@ -20,3 +20,6 @@
 # Libwallet, gomobile bindings related folders
 libwallet
 .build
+
+
+# New addition
